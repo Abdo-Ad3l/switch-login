@@ -1,0 +1,197 @@
+.wrapper {
+  --input-focus: #2d8cf0;
+  --font-color: #ffffff;
+  --font-color-sub: #6f7d8a;
+  --bg-color: #1E2E3D;
+  --bg-color-alt: #666;
+  --main-color: #323232;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 90vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #1E2E3D;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.switch {
+  transform: translateY(-200px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 50px;
+  height: 20px;
+}
+
+.card-side::before {
+  position: absolute;
+  content: "Log In";
+  top: 0;
+  left: -70px;
+  width: 100px;
+  color: var(--font-color);
+  font-weight: 600;
+  text-decoration: underline;
+  transition: 0.3s;
+}
+
+.card-side::after {
+  position: absolute;
+  content: "Sign Up";
+  top: 0;
+  left: 70px;
+  width: 100px;
+  color: var(--font-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.toggle {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  transition: 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 17px;
+  width: 20px;
+  left: -2px;
+  bottom: 2px;
+  border: 2px solid var(--main-color);
+  box-shadow: 0 3px 0 var(--main-color);
+  border-radius: 5px;
+  transition: 0.3s;
+  background-color: #fff;
+}
+
+.toggle:checked + .slider {
+  background-color: var(--input-focus);
+}
+.toggle:checked + .slider::before {
+  transform: translateX(30px);
+  background-color: var(--input-focus);
+}
+.toggle:checked ~ .card-side::before {
+  text-decoration: none;
+}
+.toggle:checked ~ .card-side::after {
+  text-decoration: underline;
+}
+
+/* card */
+
+.flip-card__inner {
+  width: 300px;
+  height: 350px;
+  position: relative;
+  background-color: transparent;
+  perspective: 1000px;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.toggle:checked ~ .flip-card__inner {
+  transform: rotateY(180deg);
+}
+.toggle:checked ~ .flip-card__front {
+  box-shadow: none;
+}
+
+.flip-card__front,
+.flip-card__back {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  backface-visibility: hidden;
+  background: #273444;
+  padding: 20px;
+  gap: 20px;
+  border-radius: 5px;
+  /* border: 1px solid #094a80; */
+}
+
+.flip-card__back {
+  width: 100%;
+  transform: rotateY(180deg);
+}
+
+.flip-card__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.title {
+  margin: 20px 0;
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--font-color);
+  text-align: center;
+}
+
+.flip-card__input {
+  height: 40px;
+  width: 250px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--bg-color);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+.flip-card__input::placeholder {
+  color: var(--font-color-sub);
+  opacity: 0.6;
+}
+
+.flip-card__btn:active {
+  /* box-shadow: 0px 0px var(--main-color); */
+  /* transform: rotate(180deg); */
+}
+
+.flip-card__btn {
+  width: 150px;
+  height: 40px;
+  background-color: #5050FE;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  /* box-shadow: 4px 4px var(--main-color); */
+  margin: 20px 0;
+}
