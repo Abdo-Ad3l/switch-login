@@ -169,6 +169,7 @@ body {
   font-size: 15px;
   font-weight: 600;
   padding: 5px 10px;
+  color: #fff;
 }
 
 .flip-card__input::placeholder {
